@@ -99,7 +99,7 @@ namespace Enemys
                 yield return new WaitForSeconds(1.0f);
                 SpawnEnemyRandomPoint(_enemy);
             }
-        }       
+        }    
     }
 }
 

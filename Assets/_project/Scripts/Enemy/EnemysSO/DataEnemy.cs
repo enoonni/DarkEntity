@@ -28,4 +28,14 @@ public class DataEnemy : ScriptableObject
     {
         _listEnemy.Add(this);
     }
+
+    public static DataEnemy GetEnemy(string name)
+    {
+        foreach(DataEnemy enemy in _listEnemy)
+        {
+            if(enemy.Name == name)
+                return enemy;
+        }
+        return null;
+    }
 }
