@@ -92,11 +92,11 @@ namespace Enemys
         }  
         
         private IEnumerator Spawning()
-        {
-            int i = 0;
-            while (i++ < 50)
+        {            
+            while (true)
             {
                 yield return new WaitForSeconds(1.0f);
+                
                 SpawnEnemyRandomPoint(_enemy);
             }
         }    

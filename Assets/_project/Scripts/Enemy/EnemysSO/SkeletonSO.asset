@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f38368df8b67c43ab5846fa889f026, type: 3}
   m_Name: SkeletonSO
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 7851812977353848692, guid: 691527063651f9846be4fac13881ecae, type: 3}
   _name: Skeleton
   _maxHealth: 100
-  _attackDamage: 10
+  _attackDamage: 30
   _attackSpeed: 1
-  _attackRange: 1
+  _attackRange: 3
   _moveSpeed: 2

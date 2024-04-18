@@ -1,24 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkeletonMovement : MonoBehaviour
-{
+{  
     private DataEnemy _dataSkeleton;
-    private float _movementSpeed;
+
     private float _distants;
+    public float Distance{ get{ return _distants; } }
+    
     private float _waitingTimeAfterReached = 0.75f;
 
     private bool _hasReached = false;
+    public delegate void OnHasReachedHandler();
+    public event OnHasReachedHandler OnHasReached;
+
 
     private GameObject _player;
-    private CharacterController _controller;
+    private CharacterController _controller;      
 
-    private void Start()
-    {
-        _dataSkeleton = DataEnemy.GetEnemy("Skeleton");
-        _movementSpeed = _dataSkeleton.MoveSpeed;
-
+    public void Initialize(DataEnemy dataSkeleton)
+    {    
+        _dataSkeleton = dataSkeleton;   
         _controller = GetComponent<CharacterController>();
 
         FindPlayer();
@@ -59,14 +61,15 @@ public class SkeletonMovement : MonoBehaviour
 
     private void PursuitPlayer()
     {        
-        if(_distants > 2f && _hasReached == false)
+        if(_distants > _dataSkeleton.AttackRange && _hasReached == false)
         {
             Vector3 direction = (_player.transform.position - transform.position).normalized;
-            _controller.Move(direction * _movementSpeed * Time.deltaTime);
+            _controller.Move(direction * _dataSkeleton.MoveSpeed * Time.deltaTime);
         }
         else if(_hasReached == false)
         {
             _hasReached = true;
+            OnHasReached?.Invoke();
             StartCoroutine(WaitAfterReached());
         }
     }
