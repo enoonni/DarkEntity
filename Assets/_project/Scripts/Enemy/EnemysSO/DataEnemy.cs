@@ -11,6 +11,7 @@ public class DataEnemy : ScriptableObject
     [SerializeField] private float _attackSpeed;
     [SerializeField] private float _attackRange;
     [SerializeField] private float _moveSpeed;
+    [SerializeField] private int _getExp;
 
 
     public GameObject Prefab { get { return _prefab; } }
@@ -20,6 +21,7 @@ public class DataEnemy : ScriptableObject
     public float AttackSpeed {get { return _attackSpeed;} }
     public float AttackRange {get { return _attackRange;} }
     public float MoveSpeed {get { return _moveSpeed;} }
+    public int GetExp { get { return _getExp;}}
 
     private static List<DataEnemy> _listEnemy = new List<DataEnemy>();
     public static List<DataEnemy> ListEnemy{get{ return _listEnemy;} }

@@ -17,5 +17,6 @@ MonoBehaviour:
   _maxHealth: 100
   _attackDamage: 30
   _attackSpeed: 1
-  _attackRange: 3
+  _attackRange: 2
   _moveSpeed: 2
+  _getExp: 100

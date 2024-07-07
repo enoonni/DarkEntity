@@ -4,17 +4,15 @@ public class DarkBallController : MonoBehaviour
 {
     private float _ballSpeed = 20f;
     private float _lifetime = 2f;
-    private int _damage = 50;
-
-    private void Start()
-    {
-        Destroy(gameObject, _lifetime);
-    }
+    private int _damage = 50;    
 
     // Update is called once per frame
     private void FixedUpdate()
     {
         transform.Translate(Vector3.forward * _ballSpeed * Time.deltaTime);
+        _lifetime -= Time.deltaTime;
+        if(_lifetime <= 0)
+            Destroy(this.gameObject);
     }
 
     
@@ -25,7 +23,7 @@ public class DarkBallController : MonoBehaviour
         if (damageable != null)
         {
             damageable.TakeDamage(_damage);
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject);
         }
     }
 }
