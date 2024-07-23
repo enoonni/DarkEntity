@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using Gameplay;
+using System;
 
 public class BodyTakeDamageColor : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class BodyTakeDamageColor : MonoBehaviour
             _damageable.OnDamageTaken += SwitchColor;
     }
 
-    public void SwitchColor()
+    public void SwitchColor(object sender, EventArgs eventArgs)
     {
         GameObject objectToChangeColor = this.gameObject;
         Renderer renderer = objectToChangeColor.GetComponent<Renderer>();

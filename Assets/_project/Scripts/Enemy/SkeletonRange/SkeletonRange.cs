@@ -1,4 +1,6 @@
 using UnityEngine;
+using GameData.Enemy;
+using GameData.Player.Experience;
 
 public class SkeletonRange : MonoBehaviour
 {

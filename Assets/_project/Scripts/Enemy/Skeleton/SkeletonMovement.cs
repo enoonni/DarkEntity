@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using GameData.Enemy;
 
 public class SkeletonMovement : MonoBehaviour
 {  

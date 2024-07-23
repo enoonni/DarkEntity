@@ -1,4 +1,6 @@
 using UnityEngine;
+using GameData.Enemy;
+using GameData.Player.Experience;
 
 public class Skeleton : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class Skeleton : MonoBehaviour
 
     private void Death()
     {
+        Experience.AddExperience((uint)_skeletonData.GetExp);
         _skeletonHealth.OnDeath -= Death;
         Destroy(this.gameObject);
     }

@@ -1,47 +1,50 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputSystemHandler : MonoBehaviour
+namespace InputController
 {
-    public static InputSystemHandler Instance{get; private set;}
-    private InputSystem _inputSystem;
-
-    public Vector2 MoveDirection {get; private set;}
-
-    private void Awake()
+    public class InputSystemHandler : MonoBehaviour
     {
-        if(Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
+        public static InputSystemHandler Instance{get; private set;}
+        private InputSystem _inputSystem;
 
-        _inputSystem = new InputSystem();
-        MoveDirection = new Vector2();
-    }
+        public Vector2 MoveDirection {get; private set;}
 
-    private void OnEnable()
-    {
-        _inputSystem.Enable();
+        private void Awake()
+        {
+            if(Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
 
-        _inputSystem.Player.Move.performed += OnMovePerformed;
-        _inputSystem.Player.Move.canceled += OnMoveCancelled;
-    }
+            _inputSystem = new InputSystem();
+            MoveDirection = new Vector2();
+        }
 
-    private void OnDisable()
-    {
-        _inputSystem.Disable();
+        private void OnEnable()
+        {
+            _inputSystem.Enable();
 
-        _inputSystem.Player.Move.performed -= OnMovePerformed;
-        _inputSystem.Player.Move.canceled -= OnMoveCancelled;
-    }
+            _inputSystem.Player.Move.performed += OnMovePerformed;
+            _inputSystem.Player.Move.canceled += OnMoveCancelled;
+        }
 
-     private void OnMovePerformed(InputAction.CallbackContext context)
-    {
-        MoveDirection = context.ReadValue<Vector2>();
-    }
+        private void OnDisable()
+        {
+            _inputSystem.Disable();
 
-    private void OnMoveCancelled(InputAction.CallbackContext context)
-    {
-        MoveDirection = Vector2.zero;
+            _inputSystem.Player.Move.performed -= OnMovePerformed;
+            _inputSystem.Player.Move.canceled -= OnMoveCancelled;
+        }
+
+        private void OnMovePerformed(InputAction.CallbackContext context)
+        {
+            MoveDirection = context.ReadValue<Vector2>();
+        }
+
+        private void OnMoveCancelled(InputAction.CallbackContext context)
+        {
+            MoveDirection = Vector2.zero;
+        }
     }
 }

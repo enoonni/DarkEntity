@@ -1,8 +1,7 @@
 using UnityEngine;
 using TMPro;
-using GameData.Stopwatch;
 
-namespace UI.Stopwatch
+namespace UI.Overlay.Stopwatch
 {
     public class Stopwatch : MonoBehaviour
     {
@@ -11,7 +10,6 @@ namespace UI.Stopwatch
         private void Start()
         {
             _text = GetComponent<TMP_Text>();
-            Debug.Break();
             GameData.Stopwatch.Stopwatch.TimeIsChanged += ChangeTIme;
         }
 

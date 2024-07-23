@@ -1,7 +1,10 @@
-public interface IDamageable
-{
-    public delegate void DamageIsTakenHandler();
-    public event DamageIsTakenHandler OnDamageTaken;
+using System;
 
-    void TakeDamage(int damage);
+namespace Gameplay
+{
+    public interface IDamageable
+    {
+        public event EventHandler OnDamageTaken;
+        public void TakeDamage(int damage);
+    }
 }
