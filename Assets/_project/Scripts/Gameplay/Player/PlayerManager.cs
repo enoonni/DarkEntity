@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using Gameplay.Player.Controller;
+using GameData.Player.PlayerData;
 
 namespace Gameplay.Player
 {
@@ -16,6 +17,19 @@ namespace Gameplay.Player
         {
             Initialize();            
             PlayerTransform = GetComponent<Transform>();
+            PlayerInfo.WritePlayerTransform(PlayerTransform);
+
+            _controller = new PlayerController(Camera.main, GetComponent<CharacterController>(), GetComponent<Transform>());
+        }
+
+        private void Update()
+        {
+            _controller.Rorate();
+        }
+
+        private void FixedUpdate()
+        {
+            _controller.Move();
         }
 
         private void Initialize()
@@ -32,7 +46,7 @@ namespace Gameplay.Player
       
         public void TakeDamage(int damage)
         {
-
+            OnDamageTaken?.Invoke(null, null);
         }
     }
 }

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Gameplay.Player.Controller;
+using GameData.Player.PlayerData;
 
 namespace Gameplay.Enemys
 {
@@ -17,13 +17,23 @@ namespace Gameplay.Enemys
         private Transform _playerTransform;
         private Transform _enemyGeneratorTransform;
 
+        private void Start()
+        {
+            Initialize(10f, 6, PlayerInfo.PlayerTransform);
+        }
+
+        private void FixedUpdate()
+        {
+            MoveForPlayer();
+        }
+
         public void Initialize(float distanceToPlayer, int maxAmountPoints, Transform playerTransform)
         {
             if(Instance == null)
                 Instance = this;
             else
                 Destroy(this.gameObject);
-
+            
             _distanceToPlayer = distanceToPlayer;
             _maxAmountPoints = maxAmountPoints;
             _playerTransform = playerTransform;
@@ -77,7 +87,7 @@ namespace Gameplay.Enemys
             SetPointsPosition();
         }     
 
-        public void SpawnEnemyRandomPoint(GameObject enemy)
+        private void SpawnEnemyRandomPoint(GameObject enemy)
         {
             var point = _listSpawnPoints[Random.Range(0, _listSpawnPoints.Count)].transform;
             Instantiate(enemy, point.transform.position, point.rotation);

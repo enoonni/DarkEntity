@@ -1,9 +1,11 @@
 using UnityEngine;
+using System;
 using GameData.Enemy;
+using Gameplay;
 
 public class SkeletonHealth : MonoBehaviour, IDamageable
 {       
-    public event IDamageable.DamageIsTakenHandler OnDamageTaken;
+    public event EventHandler OnDamageTaken;
 
     public delegate void OnDeathHandler();
     public event OnDeathHandler OnDeath;
@@ -24,6 +26,6 @@ public class SkeletonHealth : MonoBehaviour, IDamageable
         if(_currentHealth <= 0)
             OnDeath?.Invoke();
         else
-            OnDamageTaken?.Invoke();
+            OnDamageTaken?.Invoke(null, null);
     }
 }

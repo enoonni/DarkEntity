@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Gameplay;
 using GameData.Enemy;
 
 public class SkeletonCombat : MonoBehaviour

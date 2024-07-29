@@ -1,39 +1,39 @@
 using UnityEngine;
 using GameData.Stopwatch;
 using Gameplay.Enemys;
+using GameData.Player.PlayerData;
 
 namespace Gameplay
 {
     public class GameplayManager : MonoBehaviour
-    {
-        private EnemyGenerator _enemyGenerator;
-        private float _stopwatch = 0.2f;
+    {        
+        //private float _stopwatch = 0.2f;
         [SerializeField] private GameObject _player;
         [SerializeField] private GameObject _enemy;
+        private int i = 0;
         
-        void Start()
+        private void Awake()
         {
-            _enemyGenerator = EnemyGenerator.Instance;
-            _enemyGenerator.Initialize(10, 6, _player.transform);
 
+        }
+
+        private void Start()
+        { 
             Stopwatch.StartStopwatch();
         }
         
         void Update()
         {
-            if(_stopwatch <= 0)
-            {
-                _stopwatch = 1f;
-                _enemyGenerator.SpawnEnemy(_enemy);
-            }
-            else if(_stopwatch > 0)
-                _stopwatch -= Time.deltaTime;
+           
         }
 
         void FixedUpdate()
         {
             Stopwatch.AddTime(Time.deltaTime);
-            
+            if(i++ < 10)
+            {
+                EnemyGenerator.Instance.SpawnEnemy(_enemy);
+            }
         }
     } 
 }

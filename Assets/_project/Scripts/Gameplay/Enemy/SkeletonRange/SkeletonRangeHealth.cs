@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using GameData.Enemy;
+using Gameplay;
 
-public class SkeletonRangeHealth : MonoBehaviour
+public class SkeletonRangeHealth : MonoBehaviour, IDamageable
 {
-    public event IDamageable.DamageIsTakenHandler OnDamageTaken;
+    public event EventHandler OnDamageTaken;
 
     public delegate void OnDeathHandler();
     public event OnDeathHandler OnDeath;
@@ -26,6 +26,6 @@ public class SkeletonRangeHealth : MonoBehaviour
         if(_currentHealth <= 0)
             OnDeath?.Invoke();
         else
-            OnDamageTaken?.Invoke();
+            OnDamageTaken?.Invoke(null, null);
     }
 }
