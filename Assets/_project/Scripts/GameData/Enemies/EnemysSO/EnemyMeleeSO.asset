@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73f38368df8b67c43ab5846fa889f026, type: 3}
-  m_Name: SkeletonSO
+  m_Name: EnemyMeleeSO
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 7851812977353848692, guid: 691527063651f9846be4fac13881ecae, type: 3}
-  _name: Skeleton
+  _prefab: {fileID: 9196434304932227808, guid: 9f1a1e9039dbf1a4f8ee5cc490fa4114, type: 3}
+  _name: EnemyMelee
   _maxHealth: 100
-  _attackDamage: 30
+  _attackDamage: 1000
   _attackSpeed: 1
   _attackRange: 2
   _moveSpeed: 2

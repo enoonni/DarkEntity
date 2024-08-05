@@ -1,12 +1,12 @@
 using System;
 
-namespace GameData.Player.PlayerHealth
+namespace GameData.Player.PlayerData
 {
     public class Health
     {
         public static event EventHandler PlayerHealthChanged;
-        
-        private int _health;
+        public static event EventHandler Death;
+        public static int _health{get; private set;}        
 
         public Health(int health)
         {
@@ -18,7 +18,15 @@ namespace GameData.Player.PlayerHealth
             _health -= damage;
             
             if(_health <= 0)
+            {
+                _health = 0;
                 PlayerHealthChanged?.Invoke(null, null);
+                Death?.Invoke(null, null);
+            }
+            else
+            {
+                PlayerHealthChanged?.Invoke(null, null);
+            }                
         }
 
     }

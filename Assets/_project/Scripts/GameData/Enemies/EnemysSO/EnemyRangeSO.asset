@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73f38368df8b67c43ab5846fa889f026, type: 3}
-  m_Name: SkeletonRangeSO
+  m_Name: EnemyRangeSO
   m_EditorClassIdentifier: 
   _prefab: {fileID: 0}
-  _name: 
+  _name: EnemyRange
   _maxHealth: 75
   _attackDamage: 50
   _attackSpeed: 2
